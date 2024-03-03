@@ -1,0 +1,39 @@
+# NOTE: update this with your service name
+service: ai-demo-api
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  esbuild:
+    bundle: true
+    minify: false
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: prod
+  region: us-west-2 # us-west-2 = Oregon
+  environment: ${file(env.yml):${self:provider.stage}}
+  tags:
+    client: ks-machine-learning
+
+functions:
+  createAutoMLJob:
+    handler: functions/createAutoMLJob.main
+  createEndpoint:
+    handler: functions/createEndpoint.main
+  createModel: 
+    handler: functions/createModel.main
+  describeAutoMLJob:
+    handler: functions/describeAutoMLJob.main
+  describeEndpoint:
+    handler: functions/describeEndpoint.main
+  uploadFile:
+    handler: functions/uploadFile.main
+  

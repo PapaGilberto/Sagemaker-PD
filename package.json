@@ -1,0 +1,26 @@
+{
+  "name": "test-api",
+  "version": "1.1.0",
+  "description": "Our KS starter for an api",
+  "main": "handler.js",
+  "scripts": {
+    "jest": "jest",
+    "createAutoMLJob": "serverless invoke local --function createAutoMLJob --path mocks/create-automl-job-event.json",
+    "createEndpoint": "serverless invoke local --function createEndpoint --path mocks/create-endpoint-event.json",
+    "createModel": "serverless invoke local --function createModel --path mocks/create-model-event.json",
+    "describeAutoMLJob": "serverless invoke local --function describeAutoMLJob --path mocks/describe-automl-job-event.json",
+    "describeEndpoint": "serverless invoke local --function describeEndpoint --path mocks/describe-endpoint-event.json",
+    "uploadFile": "serverless invoke local --function uploadFile --path mocks/upload-file-event.json",
+    "deploy": "serverless deploy"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.1",
+    "jest": "^29.7.0",
+    "serverless-esbuild": "^1.51.0",
+    "serverless-offline": "^13.3.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1569.0",
+    "source-map-support": "^0.5.21"
+  }
+}
