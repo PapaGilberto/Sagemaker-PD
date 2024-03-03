@@ -9,7 +9,6 @@ AWS.config.update({
 const sagemaker = new AWS.SageMaker();
 
 export async function main(event, context, callback) {
-  // Specify your model name and the endpoint configuration
   const body = JSON.parse(event.body);
   const { modelName, image, modelDataUrl } = body;
   
@@ -17,8 +16,8 @@ export async function main(event, context, callback) {
     ExecutionRoleArn: process.env.SAGEMAKER_ROLE_ARN,
     ModelName: modelName,
     PrimaryContainer: {
-        Image: image, // Get this from your AutoML job's best candidate
-        ModelDataUrl: modelDataUrl, // And this
+        Image: image, 
+        ModelDataUrl: modelDataUrl, 
     },
 };
 

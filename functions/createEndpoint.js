@@ -9,7 +9,6 @@ AWS.config.update({
 const sagemaker = new AWS.SageMaker();
 
 export async function main(event, context, callback) {
-  // Specify your model name and the endpoint configuration
   const body = JSON.parse(event.body);
   const modelName = body.modelName;
   const endpointConfigName = `${modelName}-endpoint-config-3`;
